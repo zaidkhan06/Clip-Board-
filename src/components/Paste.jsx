@@ -17,7 +17,7 @@ const Paste = () => {
 
   function handleDelete(pasteId) {
     dispatch(removeFromPastes(pasteId));
-    toast.success("Paste deleted!");
+    
   }
 
   return (
