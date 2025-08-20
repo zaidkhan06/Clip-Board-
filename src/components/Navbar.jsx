@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="text-white shadow-[0_4px_25px_rgba(102,116,204,0.6)] ">
+    <nav className="fixed w-full z-10  text-white shadow-[0_4px_25px_rgba(102,116,204,0.6)] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14">
           {/* Logo */}
@@ -61,9 +61,9 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden  overflow-hidden"
+            className="md:hidden  overflow-hidden "
           >
-            <div className="px-4 pb-4 space-y-2">
+            <div className="px-4 pb-4 space-y-2 bg-black">
               <NavLink
                 to="/"
                 onClick={() => setIsOpen(false)}

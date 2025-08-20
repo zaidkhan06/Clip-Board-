@@ -1,23 +1,50 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react"; // optional icon (npm i lucide-react)
 import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTopastes, updateToPastes } from "../redux/clipboardSlice";
 
 const Home = () => {
   const [title, setTitle] = useState("");
   const [value, setValue] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const pasteId = searchParams.get("pasteId");
+  const dispatch = useDispatch();
+
+  function createPaste() {
+    const paste = {
+      title: title,
+      content: value,
+      _id: pasteId || 
+      Date.now().toString(36),
+      createdAt: new Date().toISOString(),
+    }
+
+    if(pasteId) {
+      dispatch(updateToPastes(paste));
+
+    } else {
+      dispatch(addTopastes(paste));
+
+    }
+
+    setTitle('');
+    setValue('');
+    setSearchParams({});
+    
+
+  }
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4">
+    <div className="flex justify-center items-center min-h-screen px-4 overflow-y-hidden">
       <div className="w-full max-w-md">
-        <label className="block text-[#6674CC] text-lg mb-3 mt-3 font-semibold">
+        <label className="block text-[#6674CC] text-lg mb-3 mt-16  font-semibold">
           Enter Title
         </label>
 
         <div className="relative">
           {/* Icon inside input */}
-          <span className="absolute inset-y-0 left-4 flex items-center text-[#6674CC] z-10">
+          <span className="absolute inset-y-0 left-4 flex items-center text-[#6674CC] z-1">
             <Search size={20} />
           </span>
 
@@ -39,6 +66,7 @@ const Home = () => {
         {/* Buttons Row (responsive) */}
         <div className="mt-6 flex flex-col sm:flex-row gap-3">
           <button
+          onClick={createPaste}
             className="flex-1 py-3 rounded-2xl font-semibold 
                        bg-[#6674CC] text-white 
                        shadow-lg hover:bg-[#5560b5] 
