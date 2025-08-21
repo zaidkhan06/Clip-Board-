@@ -3,6 +3,7 @@ import { Search } from "lucide-react"; // optional icon (npm i lucide-react)
 import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addTopastes, updateToPastes } from "../redux/clipboardSlice";
+import toast from "react-hot-toast/headless";
 
 const Home = () => {
   const [title, setTitle] = useState("");
@@ -10,6 +11,12 @@ const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const pasteId = searchParams.get("pasteId");
   const dispatch = useDispatch();
+
+  function handleCancel(){
+    setTitle('');
+    setValue('');
+    toast.success("Cancel");
+  }
 
   function createPaste() {
     const paste = {
@@ -51,6 +58,7 @@ const Home = () => {
           {/* Glassy Input */}
           <input
             type="text"
+            required
             placeholder="Type something..."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -76,6 +84,7 @@ const Home = () => {
           </button>
 
           <button
+          onClick={handleCancel}
             className="flex-1 py-3 rounded-2xl font-semibold 
                        bg-white/10 backdrop-blur-md text-white
                        border border-blue-500/30 

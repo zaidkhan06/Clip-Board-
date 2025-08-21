@@ -66,7 +66,7 @@ const Paste = () => {
                 </button>
                 <button
                   onClick={() => handleDelete(paste?._id)}
-                  className="px-3 py-1 bg-red-600 rounded-lg hover:bg-red-700 transition"
+                  className="px-3 py-1 bg-[#6674CC] rounded-lg hover:bg-red-700 transition"
                 >
                   Delete
                 </button>
@@ -75,11 +75,11 @@ const Paste = () => {
                     navigator.clipboard.writeText(paste?.content);
                     toast.success("Copied to clipboard");
                   }}
-                  className="px-3 py-1 bg-green-600 rounded-lg hover:bg-green-700 transition"
+                  className="px-3 py-1 bg-[#6674CC] rounded-lg hover:bg-green-700 transition"
                 >
                   Copy
                 </button>
-                <button className="px-3 py-1 bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+                <button className="px-3 py-1 bg-[#6674CC] rounded-lg hover:bg-blue-700 transition">
                   Share
                 </button>
               </div>

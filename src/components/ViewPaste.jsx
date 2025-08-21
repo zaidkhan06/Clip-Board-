@@ -27,12 +27,14 @@ function ViewPaste() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 pt-20">
-      <div className="bg-gray-900 text-white p-6 rounded-xl shadow-lg hover:shadow-[0_4px_20px_rgba(102,116,204,0.6)] transition">
+    <div className="max-w-4xl mx-auto p-6 pt-20 ">
+      <div className="bg-gray-900  overflow-x-hidden text-white p-6 rounded-xl shadow-lg hover:shadow-[0_4px_20px_rgba(102,116,204,0.6)] transition">
         {/* Title */}
+        <div className="overflow-x-hidden">
         <h1 className="text-2xl font-bold text-[#6674CC] mb-2">
           {paste.title}
         </h1>
+        </div>
 
         {/* Created At */}
         <p className="text-sm text-gray-400 mb-4">
@@ -48,7 +50,7 @@ function ViewPaste() {
           {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className="absolute top-1 right-2 flex items-center gap-2 px-2  cursor-pointer text-white text-sm rounded-lg shadow-md transition"
+            className="absolute top-4 right-2 flex items-center gap-2 px-2 bg-[#6674CC]  cursor-pointer text-white text-sm rounded-lg shadow-md transition"
           >
             <Copy size={16} />
             {copied ? "Copied!" : "Copy"}
